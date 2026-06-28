@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A1 Fast Food - a modern restaurant website featuring bestsellers, food menu, gallery, blogs, and quick login.">
+    <meta name="theme-color" content="#e86c2a">
+    <title>A1 Fast Food | Restaurant & Delivery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/f30fac2c61.js" crossorigin="anonymous" defer></script>
+    <script src="src/public/api-client.js" defer></script>
+    <script src="style.js" defer></script>
+</head>
+
+<body>
+    <div class="site-shell">
+        <header class="site-header">
+            <a class="logo" href="#home" aria-label="A1 Fast Food home">
+                <span class="logo__mark">A1</span>
+                <span class="logo__text">FAST FOOD</span>
+            </a>
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+
+            <nav class="site-nav" id="primary-navigation" aria-label="Primary">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#food">Food</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#blog">Blogs</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions" aria-label="Quick actions">
+                <button class="icon-button" type="button" aria-label="Account" id="account-button">
+                    <i class="fa-solid fa-user" aria-hidden="true"></i>
+                </button>
+                <button class="icon-button" type="button" aria-label="Cart" id="cart-button">
+                    <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero" id="home">
+                <div class="hero__copy reveal">
+                    <p class="eyebrow">Fresh food, fast service, premium presentation</p>
+                    <h1>Eat Best At A1 FAST FOOD</h1>
+                    <p class="hero__lead">WELCOME TO THE A1 FAST FOOD RESTAURANT. We are here to serve you the best quality and most hygienic food in the market.</p>
+
+                    <div class="info-grid" aria-label="Restaurant overview">
+                        <article class="info-card">
+                            <span>Address</span>
+                            <p>387-L, Prakash Nagar Rd, Model Town, Jalandhar, Punjab 144403</p>
+                        </article>
+                        <article class="info-card">
+                            <span>Opening Hours</span>
+                            <p>12:00 pm to 06:00 pm<br>06:30 pm to 11:30 pm</p>
+                        </article>
+                        <article class="info-card">
+                            <span>Restaurant Info</span>
+                            <p>8854697850<br>feedback@a1fastfood.com</p>
+                        </article>
+                    </div>
+
+                    <div class="hero__actions">
+                        <a class="btn btn--primary" href="#food">Explore Menu</a>
+                        <a class="btn btn--secondary" href="#gallery">View Gallery</a>
+                    </div>
+                </div>
+
+                <div class="hero__media reveal">
+                    <img src="photo/1.avif" alt="Freshly prepared A1 Fast Food spread" width="900" height="900">
+                    <div class="hero__badge">
+                        <strong>Diwali Offer</strong>
+                        <span>Curated combos and premium deals</span>
+                    </div>
+                </div>
+
+                <aside class="login-panel reveal" aria-label="Account panel">
+                    <div class="auth-panel__header">
+                        <h2>Account Center</h2>
+                        <p id="auth-status">Sign in to save carts, wishlists, and orders.</p>
+                    </div>
+
+                    <div class="auth-tabs" role="tablist" aria-label="Authentication actions">
+                        <button class="auth-tab is-active" type="button" data-auth-tab="login" aria-selected="true">Login</button>
+                        <button class="auth-tab" type="button" data-auth-tab="register" aria-selected="false">Register</button>
+                        <button class="auth-tab" type="button" data-auth-tab="forgot" aria-selected="false">Forgot</button>
+                        <button class="auth-tab" type="button" data-auth-tab="reset" aria-selected="false">Reset</button>
+                    </div>
+
+                    <form class="auth-form is-active" data-auth-form="login">
+                        <input type="email" name="email" placeholder="Enter Email Here" autocomplete="email" required>
+                        <input type="password" name="password" placeholder="Enter Password Here" autocomplete="current-password" required>
+                        <button class="btn btn--primary btn--full" type="submit">Login</button>
+                    </form>
+
+                    <form class="auth-form" data-auth-form="register" hidden>
+                        <input type="text" name="name" placeholder="Full Name" autocomplete="name" required>
+                        <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
+                        <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel">
+                        <input type="password" name="password" placeholder="Create Password" autocomplete="new-password" required>
+                        <button class="btn btn--primary btn--full" type="submit">Create Account</button>
+                    </form>
+
+                    <form class="auth-form" data-auth-form="forgot" hidden>
+                        <input type="email" name="email" placeholder="Email for reset token" autocomplete="email" required>
+                        <button class="btn btn--secondary btn--full" type="submit">Send Reset Token</button>
+                    </form>
+
+                    <form class="auth-form" data-auth-form="reset" hidden>
+                        <input type="text" name="token" placeholder="Reset Token" autocomplete="one-time-code" required>
+                        <input type="password" name="password" placeholder="New Password" autocomplete="new-password" required>
+                        <button class="btn btn--secondary btn--full" type="submit">Reset Password</button>
+                    </form>
+
+                    <div class="auth-panel__footer">
+                        <button class="btn btn--secondary btn--full" type="button" id="logout-button">Logout</button>
+                        <p class="login-panel__meta">JWT authentication, saved carts, profile data, and order history all flow through the backend.</p>
+                    </div>
+                </aside>
+            </section>
+
+            <section class="section reveal" id="food" aria-labelledby="featured-heading">
+                <div class="section-heading">
+                    <p class="eyebrow">Bestsellers</p>
+                    <h2 id="featured-heading">Diwali Offer</h2>
+                    <p>Signature combinations designed to spotlight your most clickable products.</p>
+                </div>
+                <div class="catalog-toolbar" aria-label="Food filters and sorting">
+                    <input id="catalog-search" type="search" placeholder="Search dishes, offers, or ingredients" aria-label="Search food items">
+                    <select id="catalog-category" aria-label="Filter by category">
+                        <option value="">All Categories</option>
+                    </select>
+                    <select id="catalog-sort" aria-label="Sort food items">
+                        <option value="featured">Featured</option>
+                        <option value="price_asc">Price: Low to High</option>
+                        <option value="price_desc">Price: High to Low</option>
+                        <option value="rating_desc">Rating</option>
+                        <option value="newest">Newest</option>
+                    </select>
+                    <button class="btn btn--secondary catalog-toolbar__clear" type="button" id="catalog-clear">Clear</button>
+                </div>
+                <p class="catalog-summary" id="catalog-summary">Loading foods...</p>
+                <div class="card-grid" id="featured-grid"></div>
+            </section>
+
+            <section class="section section--compact reveal" aria-labelledby="menu-heading">
+                <div class="section-heading">
+                    <p class="eyebrow">Food Menu</p>
+                    <h2 id="menu-heading">Complete Menu</h2>
+                    <p>All food items retained and re-presented in a cleaner, commercial ordering layout.</p>
+                </div>
+                <div class="card-grid card-grid--dense" id="menu-grid"></div>
+            </section>
+
+            <section class="section reveal" id="gallery" aria-labelledby="gallery-heading">
+                <div class="section-heading">
+                    <p class="eyebrow">Gallery</p>
+                    <h2 id="gallery-heading">Food Gallery</h2>
+                    <p>A clean visual wall that keeps the original imagery but presents it with stronger hierarchy.</p>
+                </div>
+                <div class="gallery-grid" id="gallery-grid"></div>
+            </section>
+
+            <section class="section reveal" id="blog" aria-labelledby="blog-heading">
+                <div class="section-heading">
+                    <p class="eyebrow">Blogs</p>
+                    <h2 id="blog-heading">Our Blogs</h2>
+                    <p>Restaurant storytelling that supports search, credibility, and engagement.</p>
+                </div>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <img src="photo/fd2.jpg" alt="Veg burger styled as a featured blog image" loading="lazy" decoding="async" width="600" height="420">
+                        <div class="blog-card__body">
+                            <h3>Read New Blog For Offers</h3>
+                            <p>The burger has been a staple of our diet since the late 19th century, starting life as a high society dish that was one of the most expensive out there before morphing into convenience food.</p>
+                            <a href="https://iamafoodblog.com/" target="_blank" rel="noreferrer">Read More</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <img src="photo/g3.jpg" alt="Indian bread and meal styling for the second blog" loading="lazy" decoding="async" width="600" height="420">
+                        <div class="blog-card__body">
+                            <h3>Read New Blog For Offers</h3>
+                            <p>The naan recipe comes together super quick. It's soft and puffy, just like the bread you get at your favorite Indian restaurant. This recipe gets its tang and softness from milk and yogurt.</p>
+                            <a href="https://iamafoodblog.com/" target="_blank" rel="noreferrer">Read More</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-grid">
+                <section class="footer-block">
+                    <h2>About Us</h2>
+                    <p>Fresh Food</p>
+                    <p>Quality</p>
+                    <p>Affordable</p>
+                    <p>Offers</p>
+                </section>
+                <section class="footer-block">
+                    <h2>Top Dishes</h2>
+                    <p>Paneer</p>
+                    <p>Burgers</p>
+                    <p>Pizza</p>
+                    <p>Fast Food</p>
+                </section>
+                <section class="footer-block">
+                    <h2>Offer</h2>
+                    <p>50% OFF</p>
+                    <p>Bulk Order</p>
+                    <p>Coupans</p>
+                    <p>Offer</p>
+                </section>
+                <section class="footer-block">
+                    <h2>Connect On</h2>
+                    <p>Twitter</p>
+                    <p>Facebook</p>
+                    <p>LinkedIn</p>
+                    <p>/Instagram</p>
+                </section>
+            </div>
+        </footer>
+    </div>
+
+    <div class="modal" id="food-modal" hidden>
+        <button class="modal__backdrop" type="button" data-close-modal aria-label="Close food details"></button>
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="modal__close" type="button" data-close-modal aria-label="Close food details">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+            <img id="modal-image" src="" alt="" width="720" height="520">
+            <div class="modal__content">
+                <p class="eyebrow">A1 Fast Food</p>
+                <h2 id="modal-title"></h2>
+                <p class="modal__price" id="modal-price"></p>
+                <p id="modal-description"></p>
+                <p class="modal__offer" id="modal-offer"></p>
+                <div class="modal__actions">
+                    <button class="btn btn--primary" type="button" data-modal-action="buy-now">Buy Now</button>
+                    <button class="btn btn--secondary" type="button" data-modal-action="cart">Add To Cart</button>
+                    <button class="btn btn--secondary" type="button" data-modal-action="wishlist">Wishlist</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="drawer" id="cart-drawer" hidden>
+        <button class="drawer__backdrop" type="button" data-close-drawer aria-label="Close cart drawer"></button>
+        <aside class="drawer__panel" aria-labelledby="cart-drawer-title">
+            <div class="drawer__header">
+                <h2 id="cart-drawer-title">Your Cart</h2>
+                <button class="modal__close" type="button" data-close-drawer aria-label="Close cart drawer">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="drawer__content">
+                <div class="drawer__list" id="cart-items"></div>
+                <div class="drawer__totals">
+                    <div><span>Subtotal</span><strong id="cart-subtotal">Rs. 0/-</strong></div>
+                    <div><span>Delivery</span><strong id="cart-delivery">Rs. 0/-</strong></div>
+                    <div><span>Tax</span><strong id="cart-tax">Rs. 0/-</strong></div>
+                    <div><span>Total</span><strong id="cart-total">Rs. 0/-</strong></div>
+                </div>
+
+                <form class="checkout-form" id="checkout-form">
+                    <h3>Checkout</h3>
+                    <input type="text" name="name" placeholder="Full name" autocomplete="name" required>
+                    <input type="tel" name="phone" placeholder="Phone number" autocomplete="tel" required>
+                    <input type="text" name="line1" placeholder="Address line 1" required>
+                    <input type="text" name="line2" placeholder="Address line 2">
+                    <div class="checkout-form__grid">
+                        <input type="text" name="city" placeholder="City" required>
+                        <input type="text" name="state" placeholder="State" required>
+                    </div>
+                    <div class="checkout-form__grid">
+                        <input type="text" name="pincode" placeholder="Pincode" required>
+                        <select name="paymentMethod" aria-label="Payment method">
+                            <option value="cod">Cash on Delivery</option>
+                            <option value="razorpay">Razorpay</option>
+                        </select>
+                    </div>
+                    <textarea name="customerNote" rows="3" placeholder="Delivery instructions (optional)"></textarea>
+                    <button class="btn btn--primary btn--full" type="submit">Place Order</button>
+                    <button class="btn btn--secondary btn--full" type="button" id="save-cart-button">Save Cart</button>
+                </form>
+
+                <section class="orders-panel">
+                    <div class="orders-panel__header">
+                        <h3>Order History</h3>
+                        <button class="btn btn--secondary" type="button" id="load-orders-button">Load Orders</button>
+                    </div>
+                    <div class="orders-list" id="orders-list"></div>
+                </section>
+            </div>
+        </aside>
+    </div>
+
+    <div class="toast-root" id="toast-root" aria-live="polite" aria-atomic="true"></div>
+</body>
+
+</html>
